@@ -1,42 +1,213 @@
-#root {
-  max-width: 1280px;
+:root {
+  --bg: #f8f9fa;
+  /* Lighter, modern background */
+  --card-bg: #ffffff;
+  --primary: #4f46e5;
+  /* Indigo */
+  --text-main: #1f2937;
+  --text-sub: #6b7280;
+  --border: #e5e7eb;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-main);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
+}
+
+/* --- FULL WIDTH DASHBOARD LAYOUT --- */
+.container {
+  width: 100%;
+  max-width: 1800px;
+  /* Limits width only on massive 4k screens */
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* --- THE GRID SYSTEM --- */
+.main-layout {
+  display: grid;
+  /* Desktop: Inventory takes 70%, Sidebar takes 30% */
+  grid-template-columns: 2.5fr 1fr;
+  gap: 24px;
+  align-items: start;
 }
 
+/* The Sidebar (Right Column) */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: sticky;
+  /* Keep it visible while scrolling inventory */
+  top: 20px;
+}
+
+/* --- CARD STYLING --- */
 .card {
-  padding: 2em;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  /* Softer rounded corners */
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  /* Subtle shadow */
+  transition: box-shadow 0.2s ease;
 }
 
-.read-the-docs {
-  color: #888;
+.card:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 1.25rem;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* --- INVENTORY LIST & FORM --- */
+.add-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.add-form input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.add-form input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.add-form button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.add-form button:hover {
+  background-color: #4338ca;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+.tag {
+  background-color: #eef2ff;
+  color: var(--primary);
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* --- ALERTS & PREDICTIONS --- */
+.prediction,
+.alert {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.prediction small {
+  color: var(--text-sub);
+}
+
+.alert.critical strong {
+  color: #dc2626;
+}
+
+.alert.expired strong {
+  color: #991b1b;
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+/* Tablet (Portrait): Stack everything, but maybe kept wider */
+@media (max-width: 1024px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+    /* Stack into one column */
+  }
+
+  .sidebar {
+    position: static;
+    /* Stop sticky behavior on mobile */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Show alerts/predictions side-by-side */
+    gap: 20px;
+  }
+}
+
+/* Mobile: Stack everything vertically */
+@media (max-width: 768px) {
+  .sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
 }

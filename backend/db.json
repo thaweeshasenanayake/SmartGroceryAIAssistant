@@ -1,16 +1,65 @@
 {
-  "inventory": [
-    {"name": "Milk", "category": "Dairy", "shelf_life_days": 7, "last_bought": "2023-10-25"},
-    {"name": "White Bread", "category": "Bakery", "shelf_life_days": 4, "last_bought": "2023-10-28"},
-    {"name": "Apples", "category": "Produce", "shelf_life_days": 14, "last_bought": "2023-10-20"},
-    {"name": "Soda", "category": "Beverages", "shelf_life_days": 90, "last_bought": "2023-10-01"},
-    {"name": "Chips", "category": "Snacks", "shelf_life_days": 60, "last_bought": "2023-10-15"}
-  ],
-  "health_map": {
-    "White Bread": "Whole Wheat Bread",
-    "Soda": "Sparkling Water",
-    "Chips": "Roasted Nuts",
-    "Candy": "Dried Fruit",
-    "Butter": "Olive Oil"
-  }
+    "inventory": [
+        {
+            "name": "Milk",
+            "category": "Dairy",
+            "shelf_life_days": 7,
+            "last_bought": "2023-10-25"
+        },
+        {
+            "name": "White Bread",
+            "category": "Bakery",
+            "shelf_life_days": 4,
+            "last_bought": "2023-10-28"
+        },
+        {
+            "name": "Apples",
+            "category": "Produce",
+            "shelf_life_days": 14,
+            "last_bought": "2023-10-20"
+        },
+        {
+            "name": "Soda",
+            "category": "Beverages",
+            "shelf_life_days": 90,
+            "last_bought": "2023-10-01"
+        },
+        {
+            "name": "Chips",
+            "category": "Snacks",
+            "shelf_life_days": 60,
+            "last_bought": "2023-10-15"
+        },
+        {
+            "name": "Brown Suger",
+            "category": "General",
+            "shelf_life_days": 7,
+            "last_bought": "2025-12-09"
+        },
+        {
+            "name": "Cake",
+            "category": "General",
+            "shelf_life_days": 7,
+            "last_bought": "2025-12-09"
+        },
+        {
+            "name": "White Rice",
+            "category": "General",
+            "shelf_life_days": 7,
+            "last_bought": "2025-12-09"
+        },
+        {
+            "name": "Milk",
+            "category": "General",
+            "shelf_life_days": 7,
+            "last_bought": "2025-12-09"
+        }
+    ],
+    "health_map": {
+        "White Bread": "Whole Wheat Bread",
+        "Soda": "Sparkling Water",
+        "Chips": "Roasted Nuts",
+        "Candy": "Dried Fruit",
+        "Butter": "Olive Oil"
+    }
 }
