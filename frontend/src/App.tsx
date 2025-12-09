@@ -85,7 +85,7 @@ function App() {
   return (
     <div className="container">
       <header>
-        <h1>🛒 AI Grocery Assistant</h1>
+        <h1>🛒 Smart Grocery AI Assistant</h1>
       </header>
 
       {/* Popup Modal for Health Suggestions */}
